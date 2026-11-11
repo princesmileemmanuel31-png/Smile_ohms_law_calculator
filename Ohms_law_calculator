@@ -1,0 +1,57 @@
+# Ohm's Law and Power Calculator with Session History
+
+history = []   # twist: every result is saved here as the program runs
+
+def get_number(prompt):
+    """Keep asking until the user types a valid number."""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Please enter a number, e.g. 12.5")
+
+def show_history():
+    """Twist: print all calculations from this session."""
+    if len(history) == 0:
+        print("No calculations were done.")
+    else:
+        print("\n--- Session history ---")
+        # TODO 1: loop through history with a for loop and print each
+        #         item with a number, e.g. "1. V = 24.0 V"
+        #         (hint: enumerate(history, start=1))
+
+while True:
+    print("\n1. Voltage (V)")
+    print("2. Current (I)")
+    print("3. Resistance (R)")
+    print("4. Power (P)")
+    print("5. Show history")
+    print("6. Quit")
+    choice = input("What do you want to find? ")
+
+    if choice == "1":
+        i = get_number("Current in amps: ")
+        r = get_number("Resistance in ohms: ")
+        v = i * r
+        print(f"Voltage = {v} V")
+        history.append(f"V = {v} V  (I = {i} A, R = {r} ohms)")
+    elif choice == "2":
+        # TODO 2: ask for V and R, handle R = 0, calculate I = V / R,
+        #         print it, then history.append(...) like option 1
+        pass
+    elif choice == "3":
+        # TODO 3: ask for V and I, handle I = 0, calculate R = V / I,
+        #         print it, then history.append(...)
+        pass
+    elif choice == "4":
+        # TODO 4: ask for V and I, calculate P = V * I (unit: W),
+        #         print it, then history.append(...)
+        pass
+    elif choice == "5":
+        show_history()
+    elif choice == "6":
+        show_history()      # show a final summary before quitting
+        print("Goodbye!")
+        break
+    else:
+        print("Please choose 1 to 6.")
